@@ -1,22 +1,22 @@
 %define upstream_name    Proc-InvokeEditor
 %define upstream_version 1.06
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	2
 
-Summary:    Perl extension for starting a text editor
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Proc/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Perl extension for starting a text editor
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Proc/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Carp::Assert)
-BuildRequires: perl(File::Spec)
-BuildRequires: perl(File::Temp)
-BuildRequires: perl(Test::More)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Carp::Assert)
+BuildRequires:	perl(File::Spec)
+BuildRequires:	perl(File::Temp)
+BuildRequires:	perl(Test::More)
+BuildArch:	noarch
 
 %description
 This module provides the ability to supply some text to an external text
@@ -38,24 +38,41 @@ editor. A shell is not used but this should cover most simple cases.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 %make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc META.yml Changes LICENSE README
 %{_mandir}/man3/*
-%perl_vendorlib/Proc/
+%{perl_vendorlib}/Proc/
+
+%changelog
+* Thu Apr 28 2011 Guillaume Rousse <guillomovitch@mandriva.org> 1.60.0-1mdv2011.0
++ Revision: 660014
+- update to new version 1.06
+
+* Sun Feb 20 2011 Guillaume Rousse <guillomovitch@mandriva.org> 1.50.0-1
++ Revision: 638944
+- update to new version 1.05
+
+* Sun Aug 15 2010 Jérôme Quelin <jquelin@mandriva.org> 1.40.0-1mdv2011.0
++ Revision: 569953
+- update to 1.04
+
+* Tue Jul 13 2010 Jérôme Quelin <jquelin@mandriva.org> 1.30.0-1mdv2011.0
++ Revision: 552604
+- update to 1.03
+
+* Thu Apr 29 2010 Michael Scherer <misc@mandriva.org> 1.20.0-1mdv2010.1
++ Revision: 541075
+- import perl-Proc-InvokeEditor
 
 
+* Thu Apr 29 2010 cpan2dist 1.02-1mdv
+- initial mdv release, generated with cpan2dist
