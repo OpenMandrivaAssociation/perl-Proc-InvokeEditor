@@ -1,15 +1,15 @@
 %define upstream_name    Proc-InvokeEditor
-%define upstream_version 1.06
+%define upstream_version 1.13
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	4
+Version:	%{upstream_version}
+Release:	1
 
 Summary:	Perl extension for starting a text editor
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Proc/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		https://github.com/mstevens/Proc--InvokeEditor
+Source0:	https://cpan.metacpan.org/authors/id/M/MS/MSTEVENS/Proc-InvokeEditor-%{upstream_version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
